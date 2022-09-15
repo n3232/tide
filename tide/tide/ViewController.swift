@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let tideRepository = TideRepository()
-        let tide = tideRepository.getTide()
+        let tide = tideRepository.getTide(date: Date.now, place: Place(value: "勝浦"))
         printTide(tide)
     }
 

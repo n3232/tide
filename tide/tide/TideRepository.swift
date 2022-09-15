@@ -10,11 +10,11 @@ import Foundation
 
 class TideRepository {
 
-    func getTide() -> Tide {
+    func getTide(date: Date, place: Place) -> Tide {
 
         let tide = Tide(
-            date: Date.now,
-            place: Place(value: "勝浦"),
+            date: date,
+            place: place,
             tideLevels: [50, 60, 70, 90, 100, 130, 150,
                          130, 120, 100, 80, 70, 60,
                          50, 60, 70, 90, 100, 130, 150,
@@ -22,7 +22,6 @@ class TideRepository {
                         ],
             typeType: .koshio)
         return tide
-
 
     }
 
