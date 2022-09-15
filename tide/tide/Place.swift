@@ -9,7 +9,7 @@ struct Place {
 
     let value: String
 
-    func value() -> String {
+    func toString() -> String {
         value
     }
 }

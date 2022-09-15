@@ -19,7 +19,8 @@ class TideRepository {
                          130, 120, 100, 80, 70, 60,
                          50, 60, 70, 90, 100, 130, 150,
                          130, 120, 100, 80, 70, 60
-                        ])
+                        ],
+            typeType: .koshio)
         return tide
 
 
