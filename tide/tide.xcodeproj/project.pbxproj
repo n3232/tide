@@ -16,7 +16,20 @@
 		21BC536C28CF56FE0005B004 /* Tide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC536B28CF56FE0005B004 /* Tide.swift */; };
 		21BC536E28CF58470005B004 /* TideRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC536D28CF58470005B004 /* TideRepository.swift */; };
 		21BC537028CF59060005B004 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC536F28CF59060005B004 /* Place.swift */; };
+		21BC539628D35F6A0005B004 /* Jma.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC539528D35F6A0005B004 /* Jma.swift */; };
+		21BC539E28D361320005B004 /* tideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC539D28D361320005B004 /* tideTests.swift */; };
+		21BC53A528D3619C0005B004 /* JMATest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC53A428D3619C0005B004 /* JMATest.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		21BC539F28D361320005B004 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21BC534C28CF55BF0005B004 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 21BC535328CF55BF0005B004;
+			remoteInfo = tide;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		21BC535428CF55BF0005B004 /* tide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,10 +43,21 @@
 		21BC536B28CF56FE0005B004 /* Tide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tide.swift; sourceTree = "<group>"; };
 		21BC536D28CF58470005B004 /* TideRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TideRepository.swift; sourceTree = "<group>"; };
 		21BC536F28CF59060005B004 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		21BC539528D35F6A0005B004 /* Jma.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jma.swift; sourceTree = "<group>"; };
+		21BC539B28D361320005B004 /* tideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		21BC539D28D361320005B004 /* tideTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tideTests.swift; sourceTree = "<group>"; };
+		21BC53A428D3619C0005B004 /* JMATest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMATest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		21BC535128CF55BF0005B004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		21BC539828D361320005B004 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				21BC535628CF55BF0005B004 /* tide */,
+				21BC539C28D361320005B004 /* tideTests */,
 				21BC535528CF55BF0005B004 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				21BC535428CF55BF0005B004 /* tide.app */,
+				21BC539B28D361320005B004 /* tideTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +92,7 @@
 				21BC535928CF55BF0005B004 /* SceneDelegate.swift */,
 				21BC535B28CF55BF0005B004 /* ViewController.swift */,
 				21BC536B28CF56FE0005B004 /* Tide.swift */,
+				21BC539428D35F430005B004 /* infra */,
 				21BC536F28CF59060005B004 /* Place.swift */,
 				21BC536D28CF58470005B004 /* TideRepository.swift */,
 				21BC535D28CF55BF0005B004 /* Main.storyboard */,
@@ -74,6 +101,23 @@
 				21BC536528CF55C00005B004 /* Info.plist */,
 			);
 			path = tide;
+			sourceTree = "<group>";
+		};
+		21BC539428D35F430005B004 /* infra */ = {
+			isa = PBXGroup;
+			children = (
+				21BC539528D35F6A0005B004 /* Jma.swift */,
+			);
+			path = infra;
+			sourceTree = "<group>";
+		};
+		21BC539C28D361320005B004 /* tideTests */ = {
+			isa = PBXGroup;
+			children = (
+				21BC539D28D361320005B004 /* tideTests.swift */,
+				21BC53A428D3619C0005B004 /* JMATest.swift */,
+			);
+			path = tideTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +140,24 @@
 			productReference = 21BC535428CF55BF0005B004 /* tide.app */;
 			productType = "com.apple.product-type.application";
 		};
+		21BC539A28D361320005B004 /* tideTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 21BC53A128D361320005B004 /* Build configuration list for PBXNativeTarget "tideTests" */;
+			buildPhases = (
+				21BC539728D361320005B004 /* Sources */,
+				21BC539828D361320005B004 /* Frameworks */,
+				21BC539928D361320005B004 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				21BC53A028D361320005B004 /* PBXTargetDependency */,
+			);
+			name = tideTests;
+			productName = tideTests;
+			productReference = 21BC539B28D361320005B004 /* tideTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -108,6 +170,10 @@
 				TargetAttributes = {
 					21BC535328CF55BF0005B004 = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					21BC539A28D361320005B004 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 21BC535328CF55BF0005B004;
 					};
 				};
 			};
@@ -125,6 +191,7 @@
 			projectRoot = "";
 			targets = (
 				21BC535328CF55BF0005B004 /* tide */,
+				21BC539A28D361320005B004 /* tideTests */,
 			);
 		};
 /* End PBXProject section */
@@ -140,6 +207,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21BC539928D361320005B004 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -147,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BC539628D35F6A0005B004 /* Jma.swift in Sources */,
 				21BC535C28CF55BF0005B004 /* ViewController.swift in Sources */,
 				21BC535828CF55BF0005B004 /* AppDelegate.swift in Sources */,
 				21BC535A28CF55BF0005B004 /* SceneDelegate.swift in Sources */,
@@ -156,7 +231,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		21BC539728D361320005B004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				21BC53A528D3619C0005B004 /* JMATest.swift in Sources */,
+				21BC539E28D361320005B004 /* tideTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		21BC53A028D361320005B004 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 21BC535328CF55BF0005B004 /* tide */;
+			targetProxy = 21BC539F28D361320005B004 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		21BC535D28CF55BF0005B004 /* Main.storyboard */ = {
@@ -348,6 +440,42 @@
 			};
 			name = Release;
 		};
+		21BC53A228D361320005B004 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KLWE7678P9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.kosuke.nagao.tideTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tide.app/tide";
+			};
+			name = Debug;
+		};
+		21BC53A328D361320005B004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KLWE7678P9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.kosuke.nagao.tideTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tide.app/tide";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -365,6 +493,15 @@
 			buildConfigurations = (
 				21BC536928CF55C00005B004 /* Debug */,
 				21BC536A28CF55C00005B004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		21BC53A128D361320005B004 /* Build configuration list for PBXNativeTarget "tideTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21BC53A228D361320005B004 /* Debug */,
+				21BC53A328D361320005B004 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
