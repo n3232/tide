@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        JMA().getTideTxt()
+//        JMA().getTideTxt()
 
 //        let tideRepository = TideRepository()
 //        let tide = tideRepository.getTide(date: Date.now, place: Place(value: "勝浦"))
