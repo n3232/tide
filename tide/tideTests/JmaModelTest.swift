@@ -1,10 +1,11 @@
 import Foundation
-//https://www.data.jma.go.jp/kaiyou/db/tide/suisan/readme.html
-// 地点記号
-// https://www.data.jma.go.jp/kaiyou/db/tide/suisan/station2023.php
+
+
+import XCTest
+@testable import tide
+
 // 66103138165179179166147126113112123143164181186177153117 75 35  5 -8  022 1 1QL 429181145518699999999999999 93611122 7 -899999999999999
 
-struct JmaTextData {
     // 66103138165179179166147126113112123143164181186177153117 75 35  5 -8  0
     // 22 1 1
     //QL
@@ -17,17 +18,24 @@ struct JmaTextData {
     //　干潮時刻・潮位    ：    １０９～１３６カラム    　時刻４桁（時分）、潮位３桁（ｃｍ）
     //　※ 満（干）潮が予測されない場合、満（干）潮時刻を「9999」、潮位を「999」としています。
 
-}
+class JmaModelTest: XCTestCase {
 
-struct JmaDate {
-    var value: Date
-    static let position = (73, 78)
-    mutating func from(string: String) {
+    private let line =
+    " 66103138165179179166147126113112123143164181186177153117 75 35  5 -8  0" +
+    "22 1 1" +
+    "QL" +
+    " 429" + "181" +
+    "1455" + "186" + "99999999999999 93611122 7 -899999999999999"
+
+    func testDate() {
+        let actual = JmaModel.getDate(line)
+
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.dateFormat = "yyMMdd"
-        value = formatter.date(from: string)!
+        let except = formatter.date(from: "220101")!
+
+        XCTAssertEqual(actual, except)
     }
+
 }
-
-

@@ -10,6 +10,9 @@
 		2194E96228D55B320048E0FE /* JmaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96128D55B320048E0FE /* JmaData.swift */; };
 		2194E96428D568670048E0FE /* JmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96328D568670048E0FE /* JmaModel.swift */; };
 		2194E96628D5696F0048E0FE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96528D5696F0048E0FE /* Location.swift */; };
+		2194E96828D80E880048E0FE /* extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96728D80E880048E0FE /* extention.swift */; };
+		2194E96A28D810A00048E0FE /* extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96928D810A00048E0FE /* extention.swift */; };
+		2194E96C28D8403A0048E0FE /* JmaModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96B28D8403A0048E0FE /* JmaModelTest.swift */; };
 		21BC535828CF55BF0005B004 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC535728CF55BF0005B004 /* AppDelegate.swift */; };
 		21BC535A28CF55BF0005B004 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC535928CF55BF0005B004 /* SceneDelegate.swift */; };
 		21BC535C28CF55BF0005B004 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC535B28CF55BF0005B004 /* ViewController.swift */; };
@@ -38,6 +41,9 @@
 		2194E96128D55B320048E0FE /* JmaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JmaData.swift; sourceTree = "<group>"; };
 		2194E96328D568670048E0FE /* JmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JmaModel.swift; sourceTree = "<group>"; };
 		2194E96528D5696F0048E0FE /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		2194E96728D80E880048E0FE /* extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extention.swift; sourceTree = "<group>"; };
+		2194E96928D810A00048E0FE /* extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extention.swift; sourceTree = "<group>"; };
+		2194E96B28D8403A0048E0FE /* JmaModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JmaModelTest.swift; sourceTree = "<group>"; };
 		21BC535428CF55BF0005B004 /* tide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC535728CF55BF0005B004 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21BC535928CF55BF0005B004 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +104,7 @@
 				21BC535928CF55BF0005B004 /* SceneDelegate.swift */,
 				21BC535B28CF55BF0005B004 /* ViewController.swift */,
 				21BC536B28CF56FE0005B004 /* Tide.swift */,
+				2194E96728D80E880048E0FE /* extention.swift */,
 				21BC539428D35F430005B004 /* infra */,
 				21BC536F28CF59060005B004 /* Place.swift */,
 				21BC536D28CF58470005B004 /* TideRepository.swift */,
@@ -125,6 +132,8 @@
 			children = (
 				21BC539D28D361320005B004 /* tideTests.swift */,
 				21BC53A428D3619C0005B004 /* JMATest.swift */,
+				2194E96928D810A00048E0FE /* extention.swift */,
+				2194E96B28D8403A0048E0FE /* JmaModelTest.swift */,
 			);
 			path = tideTests;
 			sourceTree = "<group>";
@@ -231,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21BC539628D35F6A0005B004 /* Jma.swift in Sources */,
+				2194E96828D80E880048E0FE /* extention.swift in Sources */,
 				2194E96428D568670048E0FE /* JmaModel.swift in Sources */,
 				2194E96628D5696F0048E0FE /* Location.swift in Sources */,
 				21BC535C28CF55BF0005B004 /* ViewController.swift in Sources */,
@@ -248,6 +258,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				21BC53A528D3619C0005B004 /* JMATest.swift in Sources */,
+				2194E96A28D810A00048E0FE /* extention.swift in Sources */,
+				2194E96C28D8403A0048E0FE /* JmaModelTest.swift in Sources */,
 				21BC539E28D361320005B004 /* tideTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

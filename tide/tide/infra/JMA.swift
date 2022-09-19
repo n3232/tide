@@ -29,6 +29,8 @@ struct Jma {
 //        let lines = data.components(separatedBy: "\n")
         let lines = data.split(separator: "\n")
 
+        
+
         print(lines)
         print("count=",lines.count)
 

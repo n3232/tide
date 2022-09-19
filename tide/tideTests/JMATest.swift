@@ -5,8 +5,7 @@ class JMATest: XCTestCase {
 
     func testGetTide() {
 
-        let jma = JMA()
-        jma.getTideTxt()
+        
 
         XCTAssertTrue(true)
     }
