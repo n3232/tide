@@ -15,11 +15,8 @@ struct JmaModel {
     let lowTideTime: Date
     let lowTideLevel: Int
 
-
     static func from(line: String) -> Self {
-        // 毎時潮位データ    ：    　１～　７２カラム    　３桁×２４時間（０時から２３時）
-        let hourlyTideData = [Int]()
-        //　年月日    ：    ７３～　７８カラム    　２桁×３
+        let hourlyTideData = getHourlyTideData(line)
         let date = getDate(line)
         //　地点記号    ：    ７９～　８０カラム    　２桁英数字記号
         let locationCode = Location.ZF
@@ -44,15 +41,36 @@ struct JmaModel {
         
     }
 
-     static func getDate(_ line: String) -> Date {
-         let substring = line.subString(from: 72, to: 77)
-         let dateString = substring.replacingOccurrences(of: " ", with: "0")
+// "012345678" -> ["012", "345", "678"]
+
+    static func getHourlyTideData(_ line: String) -> [Int] {
+        // 毎時潮位データ    ：    　１～　７２カラム    　３桁×２４時間（０時から２３時）
+        let substring = line.subString(from: 0, to: 71)
+        var stringArray = [String]()
+        var value = ""
+        substring.forEach { char in
+            value += String(char)
+            if (value.count == 3) {
+                stringArray.append(value.trimmingCharacters(in: .whitespaces))
+                value = ""
+            }
+        }
+
+        let results = stringArray.compactMap {
+            Int($0)
+        }
+        return results
+    }
+
+    static func getDate(_ line: String) -> Date {
+        //　年月日    ：    ７３～　７８カラム    　２桁×３
+        let substring = line.subString(from: 72, to: 77)
+        let dateString = substring.replacingOccurrences(of: " ", with: "0")
 
         let formatter = DateFormatter()
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.dateFormat = "yyMMdd"
         let date = formatter.date(from: dateString)!
         return date
-
     }
 }
