@@ -25,7 +25,11 @@ class JmaModelTest: XCTestCase {
     "22 1 1" +
     "QL" +
     " 429" + "181" +
-    "1455" + "186" + "99999999999999 93611122 7 -899999999999999"
+    "1455" + "186" +
+    "99999999999999" +
+    " 936" + "111" +
+    "22 7" + " -8" +
+    "99999999999999"
 
     func testDate() {
         let actual = JmaModel.getDate(line)
@@ -40,15 +44,54 @@ class JmaModelTest: XCTestCase {
 
     func testGetHourlyTideData() {
         let actual = JmaModel.getHourlyTideData(line)
-        let expected = [66, 103, 138, 165, 179, 179, 166, 147, 126, 113, 112, 123, 143, 164, 181, 186, 177, 153, 117, 75, 35, 5, -8, 0]
+        let expected = [66, 103, 138, 165, 179, 179,
+                        166, 147, 126, 113, 112, 123,
+                        143, 164, 181, 186, 177, 153,
+                        117, 75, 35, 5, -8, 0]
         XCTAssertEqual(actual, expected)
     }
 
     func testGetLocation() {
-
         let actual = JmaModel.getLocationCode(line)
         XCTAssertEqual(actual, "QL")
     }
+
+    func testGetHiTide1DateTime() {
+        let actual = JmaModel.getTideDateTime(line, from: 80, to: 83)
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.dateFormat = "yyMMddHHmm"
+        let expected = formatter.date(from: "2201010429")!
+        XCTAssertEqual(actual, expected)
+    }
+
+    func testGetHiTide2DateTime() {
+        let actual = JmaModel.getTideDateTime(line, from: 87, to: 90)
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.dateFormat = "yyMMddHHmm"
+        let expected = formatter.date(from: "2201011455")!
+        XCTAssertEqual(actual, expected)
+    }
+
+    func testGetLowTide1DateTime() {
+        let actual = JmaModel.getTideDateTime(line, from: 108, to: 111)
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.dateFormat = "yyMMddHHmm"
+        let expected = formatter.date(from: "2201010936")!
+        XCTAssertEqual(actual, expected)
+    }
+
+    func testGetLowTide2DateTime() {
+        let actual = JmaModel.getTideDateTime(line, from: 115, to: 118)
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.dateFormat = "yyMMddHHmm"
+        let expected = formatter.date(from: "2201012207")!
+        XCTAssertEqual(actual, expected)
+    }
+
 
 
 

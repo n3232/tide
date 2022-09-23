@@ -7,13 +7,16 @@ struct JmaModel {
     let date: Date
     //　地点記号    ：    ７９～　８０カラム    　２桁英数字記号
     let locationCode: String
-    //　満潮時刻・潮位    ：    ８１～１０８カラム    　時刻４桁（時分）、潮位３桁（ｃｍ）
-    //　※ 満（干）潮が予測されない場合、満（干）潮時刻を「9999」、潮位を「999」としています。
-    let hiTideTime: Date
-    let hiTideLevel: Int
-    //　干潮時刻・潮位    ：    １０９～１３６カラム    　時刻４桁（時分）、潮位３桁（ｃｍ）
-    let lowTideTime: Date
-    let lowTideLevel: Int
+    let hiTide1DateTime: Date
+    let hiTide1Level: Int//84-87
+    let hiTide2DateTime: Date
+    let hiTide2Level: Int
+
+
+    let lowTide1DateTime: Date
+    let lowTide1Level: Int
+    let lowTide2DateTime: Date
+    let lowTide2Level: Int
 
     static func from(line: String) -> Self {
         let hourlyTideData = getHourlyTideData(line)
@@ -21,26 +24,31 @@ struct JmaModel {
         let locationCode = getLocationCode(line)
         //　満潮時刻・潮位    ：    ８１～１０８カラム    　時刻４桁（時分）、潮位３桁（ｃｍ）
         //　※ 満（干）潮が予測されない場合、満（干）潮時刻を「9999」、潮位を「999」としています。
-        let hiTideTime = Date.now
-        let hiTideLevel = 0
+        let hiTide1DateTime = getTideDateTime(line, from: 80, to: 83)
+        let hiTide1Level = 0
+        let hiTide2DateTime = getTideDateTime(line, from: 87, to: 90)
+        let hiTide2Level = 0
         //　干潮時刻・潮位    ：    １０９～１３６カラム    　時刻４桁（時分）、潮位３桁（ｃｍ）
-        let lowTideTime = Date.now
-        let lowTideLevel = 0
-
+        let lowTide1DateTime = getTideDateTime(line, from: 108, to: 111)
+        let lowTide1Level = 0
+        let lowTide2DateTime = getTideDateTime(line, from: 115, to: 118)
+        let lowTide2Level = 0
 
         return JmaModel(
             hourlyTideData: hourlyTideData,
             date: date,
             locationCode: locationCode,
-            hiTideTime: hiTideTime,
-            hiTideLevel: hiTideLevel,
-            lowTideTime: lowTideTime,
-            lowTideLevel: lowTideLevel
+            hiTide1DateTime: hiTide1DateTime,
+            hiTide1Level: hiTide1Level,
+            hiTide2DateTime: hiTide2DateTime,
+            hiTide2Level: hiTide2Level,
+            lowTide1DateTime: lowTide1DateTime,
+            lowTide1Level: lowTide1Level,
+            lowTide2DateTime: lowTide2DateTime,
+            lowTide2Level: lowTide2Level
         )
         
     }
-
-// "012345678" -> ["012", "345", "678"]
 
     static func getHourlyTideData(_ line: String) -> [Int] {
         // 毎時潮位データ    ：    　１～　７２カラム    　３桁×２４時間（０時から２３時）
@@ -77,4 +85,21 @@ struct JmaModel {
         //　地点記号    ：    ７９～　８０カラム    　２桁英数字記号
         return line.subString(from: 78, to: 79)
     }
+
+    static func getTideDateTime(_ line: String, from: Int, to: Int) -> Date {
+
+        let HHmm1 = line.subString(from: from, to: to).replacingOccurrences(of: " ", with: "0")
+
+        //　年月日    ：    ７３～　７８カラム    　２桁×３
+        let substring = line.subString(from: 72, to: 77)
+        let yyMMdd = substring.replacingOccurrences(of: " ", with: "0")
+
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.dateFormat = "yyMMddHHmm"
+
+        let date = formatter.date(from: yyMMdd + HHmm1)!
+        return date
+    }
+
 }
