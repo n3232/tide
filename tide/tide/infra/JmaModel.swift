@@ -6,7 +6,7 @@ struct JmaModel {
     //　年月日    ：    ７３～　７８カラム    　２桁×３
     let date: Date
     //　地点記号    ：    ７９～　８０カラム    　２桁英数字記号
-    let locationCode: Location
+    let locationCode: String
     //　満潮時刻・潮位    ：    ８１～１０８カラム    　時刻４桁（時分）、潮位３桁（ｃｍ）
     //　※ 満（干）潮が予測されない場合、満（干）潮時刻を「9999」、潮位を「999」としています。
     let hiTideTime: Date
@@ -18,8 +18,7 @@ struct JmaModel {
     static func from(line: String) -> Self {
         let hourlyTideData = getHourlyTideData(line)
         let date = getDate(line)
-        //　地点記号    ：    ７９～　８０カラム    　２桁英数字記号
-        let locationCode = Location.ZF
+        let locationCode = getLocationCode(line)
         //　満潮時刻・潮位    ：    ８１～１０８カラム    　時刻４桁（時分）、潮位３桁（ｃｍ）
         //　※ 満（干）潮が予測されない場合、満（干）潮時刻を「9999」、潮位を「999」としています。
         let hiTideTime = Date.now
@@ -50,7 +49,7 @@ struct JmaModel {
         var value = ""
         substring.forEach { char in
             value += String(char)
-            if (value.count == 3) {
+            if value.count == 3 {
                 stringArray.append(value.trimmingCharacters(in: .whitespaces))
                 value = ""
             }
@@ -72,5 +71,10 @@ struct JmaModel {
         formatter.dateFormat = "yyMMdd"
         let date = formatter.date(from: dateString)!
         return date
+    }
+
+    static func getLocationCode(_ line: String) -> String {
+        //　地点記号    ：    ７９～　８０カラム    　２桁英数字記号
+        return line.subString(from: 78, to: 79)
     }
 }

@@ -44,30 +44,12 @@ class JmaModelTest: XCTestCase {
         XCTAssertEqual(actual, expected)
     }
 
-    func testGetHourlyTideData2() {
-        // やりたいこと
-        // 3の倍数の長さを持つ文字列を、先頭から３文字毎に切り出して配列に格納したい
+    func testGetLocation() {
 
-        // 例
-        // "123456789" -> ["123", "456", "789"]
-
-        // 以下のコードでやりたいことはできましたが、もっとすっきりとした書き方があれば教えていただきたいです
-
-        let target = "123456789"
-        var result = [String]()
-        var value = ""
-        target.forEach { char in
-            value += String(char)
-            if (value.count == 3) {
-                result.append(value)
-                value = ""
-            }
-        }
-        print(result) // ["123", "456", "789"]
-
-
-
-
+        let actual = JmaModel.getLocationCode(line)
+        XCTAssertEqual(actual, "QL")
     }
+
+
 
 }
