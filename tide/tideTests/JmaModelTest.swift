@@ -92,6 +92,20 @@ class JmaModelTest: XCTestCase {
         XCTAssertEqual(actual, expected)
     }
 
+    func testGetHiTideLevel() {
+        let actual1 = JmaModel.getTideLevel(line, from: 84, to: 86)
+        XCTAssertEqual(actual1, 181)
+        let actual2 = JmaModel.getTideLevel(line, from: 91, to: 93)
+        XCTAssertEqual(actual2, 186)
+    }
+
+    func testGetLowTideLevel() {
+        let actual1 = JmaModel.getTideLevel(line, from: 112, to: 114)
+        XCTAssertEqual(actual1, 111)
+        let actual2 = JmaModel.getTideLevel(line, from: 119, to: 121)
+        XCTAssertEqual(actual2, -8)
+    }
+
 
 
 

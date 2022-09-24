@@ -25,14 +25,14 @@ struct JmaModel {
         //　満潮時刻・潮位    ：    ８１～１０８カラム    　時刻４桁（時分）、潮位３桁（ｃｍ）
         //　※ 満（干）潮が予測されない場合、満（干）潮時刻を「9999」、潮位を「999」としています。
         let hiTide1DateTime = getTideDateTime(line, from: 80, to: 83)
-        let hiTide1Level = 0
+        let hiTide1Level = getTideLevel(line, from: 84, to: 86)
         let hiTide2DateTime = getTideDateTime(line, from: 87, to: 90)
-        let hiTide2Level = 0
+        let hiTide2Level = getTideLevel(line, from: 91, to: 93)
         //　干潮時刻・潮位    ：    １０９～１３６カラム    　時刻４桁（時分）、潮位３桁（ｃｍ）
         let lowTide1DateTime = getTideDateTime(line, from: 108, to: 111)
-        let lowTide1Level = 0
+        let lowTide1Level = getTideLevel(line, from: 112, to: 114)
         let lowTide2DateTime = getTideDateTime(line, from: 115, to: 118)
-        let lowTide2Level = 0
+        let lowTide2Level = getTideLevel(line, from: 119, to: 121)
 
         return JmaModel(
             hourlyTideData: hourlyTideData,
@@ -100,6 +100,11 @@ struct JmaModel {
 
         let date = formatter.date(from: yyMMdd + HHmm1)!
         return date
+    }
+
+    static func getTideLevel(_ line: String, from: Int, to: Int) -> Int {
+        let string = line.subString(from: from, to: to).trimmingCharacters(in: .whitespaces)
+        return Int(string)!
     }
 
 }
