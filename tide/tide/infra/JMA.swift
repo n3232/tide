@@ -16,7 +16,7 @@ struct Jma {
                 } else if let data = data {
                     print(data)
                     if let dataString = String(data: data, encoding: .utf8) {
-                        parser(dataString)
+                        let model = getJmaModel(dataString, dayOfYear: 0)
                     }
                 }
             }
@@ -24,15 +24,11 @@ struct Jma {
         task.resume()
     }
 
-    func parser(_ data: String) {
+    func getJmaModel(_ data: String, dayOfYear: Int) -> JmaModel {
 
-//        let lines = data.components(separatedBy: "\n")
-        let lines = data.split(separator: "\n")
+        let line = String(data.split(separator: "\n")[dayOfYear])
 
-        
-
-        print(lines)
-        print("count=",lines.count)
+        return JmaModel.from(line)
 
 
     }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2194E96228D55B320048E0FE /* JmaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96128D55B320048E0FE /* JmaData.swift */; };
 		2194E96428D568670048E0FE /* JmaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96328D568670048E0FE /* JmaModel.swift */; };
 		2194E96628D5696F0048E0FE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96528D5696F0048E0FE /* Location.swift */; };
 		2194E96828D80E880048E0FE /* extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2194E96728D80E880048E0FE /* extention.swift */; };
@@ -38,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2194E96128D55B320048E0FE /* JmaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JmaData.swift; sourceTree = "<group>"; };
 		2194E96328D568670048E0FE /* JmaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JmaModel.swift; sourceTree = "<group>"; };
 		2194E96528D5696F0048E0FE /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2194E96728D80E880048E0FE /* extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extention.swift; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 			isa = PBXGroup;
 			children = (
 				21BC539528D35F6A0005B004 /* Jma.swift */,
-				2194E96128D55B320048E0FE /* JmaData.swift */,
 				2194E96328D568670048E0FE /* JmaModel.swift */,
 				2194E96528D5696F0048E0FE /* Location.swift */,
 			);
@@ -249,7 +246,6 @@
 				21BC537028CF59060005B004 /* Place.swift in Sources */,
 				21BC536E28CF58470005B004 /* TideRepository.swift in Sources */,
 				21BC536C28CF56FE0005B004 /* Tide.swift in Sources */,
-				2194E96228D55B320048E0FE /* JmaData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

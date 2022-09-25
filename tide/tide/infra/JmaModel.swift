@@ -18,7 +18,7 @@ struct JmaModel {
     let lowTide2DateTime: Date
     let lowTide2Level: Int
 
-    static func from(line: String) -> Self {
+    static func from(_ line: String) -> Self {
         let hourlyTideData = getHourlyTideData(line)
         let date = getDate(line)
         let locationCode = getLocationCode(line)
