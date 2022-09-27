@@ -2,8 +2,9 @@ import Foundation
 
 struct Jma {
 
-    func getTideTxt() {
+    func getTideTxt(date: Date, location: Location) -> JmaModel? {
 
+        var result:JmaModel? = nil
         let url = URL(string: "https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/2023/ZF.txt")!
         let task = URLSession.shared.dataTask(
             with: url,
@@ -16,21 +17,31 @@ struct Jma {
                 } else if let data = data {
                     print(data)
                     if let dataString = String(data: data, encoding: .utf8) {
-                        let model = getJmaModel(dataString, dayOfYear: 0)
+                        result = getJmaModel(dataString, dayOfYear: 0)
                     }
                 }
             }
         )
         task.resume()
+        return result
+    }
+
+    func getUrl(date: Date, location: Location) -> URL {
+        let year = getYearFrom(date)
+        let locationCode = "ZF"
+        return URL(string:"https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/\(year)/\(locationCode).txt")!
+//        "https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/2023/ZF.txt"
+    }
+
+    func getYearFrom(_ date: Date) -> Int {
+        let calendar = Calendar(identifier: .gregorian)
+        let year = calendar.component(.year, from: date) // 2021
+        return year
     }
 
     func getJmaModel(_ data: String, dayOfYear: Int) -> JmaModel {
-
         let line = String(data.split(separator: "\n")[dayOfYear])
-
         return JmaModel.from(line)
-
-
     }
 
 }
