@@ -2,10 +2,11 @@ import Foundation
 
 struct Jma {
 
-    func getTideTxt(date: Date, location: Location) -> JmaModel? {
+    func getTideTxt(date: Date, locationCode: String) -> JmaModel? {
 
         var result:JmaModel? = nil
-        let url = URL(string: "https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/2023/ZF.txt")!
+//        let url = URL(string: "https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/2023/ZF.txt")!
+        let url = getUrl(date, locationCode)
         let task = URLSession.shared.dataTask(
             with: url,
             completionHandler: { data, response, error in
@@ -17,7 +18,7 @@ struct Jma {
                 } else if let data = data {
                     print(data)
                     if let dataString = String(data: data, encoding: .utf8) {
-                        result = getJmaModel(dataString, dayOfYear: 0)
+                        result = getJmaModel(dataString, date)
                     }
                 }
             }
@@ -26,9 +27,8 @@ struct Jma {
         return result
     }
 
-    func getUrl(date: Date, location: Location) -> URL {
+    func getUrl(_ date: Date, _ locationCode: String) -> URL {
         let year = getYearFrom(date)
-        let locationCode = "ZF"
         return URL(string:"https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/\(year)/\(locationCode).txt")!
 //        "https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/2023/ZF.txt"
     }
@@ -39,9 +39,18 @@ struct Jma {
         return year
     }
 
-    func getJmaModel(_ data: String, dayOfYear: Int) -> JmaModel {
+    func getJmaModel(_ data: String, _ date: Date) -> JmaModel {
+        let dayOfYear = getDayOfYear(from: date)
         let line = String(data.split(separator: "\n")[dayOfYear])
         return JmaModel.from(line)
+    }
+
+    func getDayOfYear(from date: Date) -> Int {
+
+        let cal = Calendar.current
+        let day = cal.ordinality(of: .day, in: .year, for: date)
+
+        return day!
     }
 
 }
