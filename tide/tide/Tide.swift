@@ -10,9 +10,14 @@ import Foundation
 struct Tide {
 
     let date: Date
-    let place: Place
+//    let place: Place
     let tideLevels: [Int]
-    let typeType: TydeType
+//    let typeType: TydeType
+
+    static func fromJmaModel(_ jmaModel: JmaModel) -> Tide {
+        Tide(date: jmaModel.date,
+             tideLevels: jmaModel.hourlyTideData)
+    }
 
 
 }

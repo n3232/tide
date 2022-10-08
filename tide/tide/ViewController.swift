@@ -15,15 +15,16 @@ class ViewController: UIViewController {
 
 //        JMA().getTideTxt()
 
-//        let tideRepository = TideRepository()
+        let tideRepository = TideRepository()
 //        let tide = tideRepository.getTide(date: Date.now, place: Place(value: "勝浦"))
 //        printTide(tide)
     }
 
     private func printTide(_ tide: Tide) {
 
+
         print(tide.date)
-        print(tide.place)
+//        print(tide.place)
 
         tide.tideLevels.forEach{
             print($0)

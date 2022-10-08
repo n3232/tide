@@ -2,30 +2,56 @@ import Foundation
 
 struct Jma {
 
-    func getTideTxt(date: Date, locationCode: String) -> JmaModel? {
+    func getJmaModel(date: Date, locationCode: String) -> JmaModel? {
 
-        var result:JmaModel? = nil
-//        let url = URL(string: "https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/2023/ZF.txt")!
         let url = getUrl(date, locationCode)
-        let task = URLSession.shared.dataTask(
-            with: url,
-            completionHandler: { data, response, error in
-                if let error = error {
-                    print("error:", error)
-                    // TODO error handling
-//                    DispatchQueue.main.async {
-//                    }
-                } else if let data = data {
-                    print(data)
-                    if let dataString = String(data: data, encoding: .utf8) {
-                        result = getJmaModel(dataString, date)
-                    }
-                }
+        Task { () -> JmaModel? in
+            var txt = ""
+            do {
+                txt = try await downloadTxt(url: url)
+                print("result", txt)
+
+            } catch {
+                print("error", error)
             }
-        )
-        task.resume()
+            print("after download")
+            return changeJmaModel(txt, date)
+        }
+//        print("after task")
+//        var result:JmaModel? = nil
+//        result = changeJmaModel(txt, date)
+        return nil
+    }
+
+    func downloadTxt(url: URL) async throws -> String {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let result = String(data: data, encoding: .utf8)!
+        print(result)
         return result
     }
+
+
+//https://ja.stackoverflow.com/questions/52727/swift4でのurlsessiontaskを用いたapiからのデータ取得について
+//    func fetch(completion: @escaping (String)->Void) {
+//        let url: URL = URL(string:"http://127.0.0.1:5000/study")!
+//
+//        let task: URLSessionTask = URLSession.shared.dataTask(
+//            with: url,
+//            completionHandler: { data, response, error in
+//                do {
+//                    if let data = data {
+//                        let dataString = String(data: data, encoding: .utf8)
+//                        //`URLSession.dataTask(with:completionHandler:)`の完了ハンドラの中で、自前の完了ハンドラを呼ぶ
+//                        completion(dataString)
+//                    }
+//                } catch {
+//                    print("error:", error.localizedDescription)
+//                    completion("") //<- 同上(エラー時のことも考えておきましょう)
+//                }
+//            })
+//                task.resume()//実行する
+//                //↑「`task.resume()`を呼んだら後は何もしてはいけない」と思っておいた方が良い
+//    }
 
     func getUrl(_ date: Date, _ locationCode: String) -> URL {
         let year = getYearFrom(date)
@@ -39,17 +65,15 @@ struct Jma {
         return year
     }
 
-    func getJmaModel(_ data: String, _ date: Date) -> JmaModel {
+    func changeJmaModel(_ txt: String, _ date: Date) -> JmaModel {
         let dayOfYear = getDayOfYear(from: date)
-        let line = String(data.split(separator: "\n")[dayOfYear])
+        let line = String(txt.split(separator: "\n")[dayOfYear])
         return JmaModel.from(line)
     }
 
     func getDayOfYear(from date: Date) -> Int {
-
         let cal = Calendar.current
         let day = cal.ordinality(of: .day, in: .year, for: date)
-
         return day!
     }
 

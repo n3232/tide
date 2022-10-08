@@ -29,5 +29,24 @@ class JMATest: XCTestCase {
         XCTAssertEqual(actual, 366) // 2020年は閏年のため1日多い
     }
 
+    func testJma() {
+        let date = calendar.date(from: DateComponents(year: 2022, month: 1, day: 1, hour: 0, minute: 0, second: 0))
+        let actual = Jma().getJmaModel(date: .now, locationCode: "ZF")
+        XCTAssertEqual(actual?.date, date)
+        
+    }
+
+    func testDownloadTxt() async throws {
+        let url = URL(string: "https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/2022/ZF.txt")!
+        let txt = try await Jma().downloadTxt(url: url)
+        print(txt)
+    }
+
+    func testGetUrl() async throws {
+        let actual = Jma().getUrl(.now, "ZF")
+        let expected = URL(string: "https://www.data.jma.go.jp/kaiyou/data/db/tide/suisan/txt/2022/ZF.txt")!
+        XCTAssertEqual(actual, expected)
+    }
+
 }
 
